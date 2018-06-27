@@ -1,4 +1,4 @@
-# Docker image containing multiple versions of bash
+# Docker image containing lots and lots of bash versions
 
 Source tarballs are fetched from MIRROR and compiled against Debian buster.
 
