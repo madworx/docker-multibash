@@ -1,9 +1,9 @@
-FROM debian:buster-slim AS build
+FROM debian:bullseye-slim AS build
 
 ARG MIRROR=https://ftp.gnu.org/gnu/bash/
 
 RUN apt-get update \
-    && apt-get install -y curl build-essential bison flex
+    && apt-get install -y --no-install-recommends curl build-essential bison flex ca-certificates
 
 RUN mkdir /build \
     && cd /build \
@@ -25,6 +25,6 @@ RUN cd /build \
         && make -s \
         && cp "bash" "/usr/local/bin/{}" )' || true
 
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 
 COPY --from=build /usr/local/bin/* /usr/local/bin/
